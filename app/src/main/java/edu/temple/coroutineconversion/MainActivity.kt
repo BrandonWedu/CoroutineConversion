@@ -19,10 +19,10 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var cakeImageView: ImageView
 
-    val handler = Handler(Looper.getMainLooper(), Handler.Callback {
-        cakeImageView.alpha = it.what / 100f
-        true
-    })
+//    val handler = Handler(Looper.getMainLooper(), Handler.Callback {
+//        cakeImageView.alpha = it.what / 100f
+//        true
+//    })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,10 +36,10 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.revealButton).setOnClickListener{
         scope.launch {
 
-                repeat(100) {
-                    handler.sendEmptyMessage(it)
-                    delay(40)
-                }
+            repeat(100) {
+                cakeImageView.alpha = it / 100f
+                delay(40)
+            }
             }
         }
 
